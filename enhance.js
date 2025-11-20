@@ -5,7 +5,6 @@
   // 2. Match the exercise name between / and ?
   const match = url.match(/\/([^\/?]+)(?:\?|$)/);
 
-
   if (!match) {
     showMessage("Exercise name not found in URL", false);
     return;
@@ -54,22 +53,31 @@
     }
   }, 200); // check every 200ms
 
-  // 6. Create the button element
-  const btn = document.createElement("button");
-  btn.textContent = "Open Exercise API";
-  btn.style.position = "fixed";
-  btn.style.top = "80px";
-  btn.style.left = "200px";
-  btn.style.zIndex = "999999";
-  btn.style.padding = "10px 15px";
-  btn.style.background = "#0066ff";
-  btn.style.color = "white";
-  btn.style.border = "none";
-  btn.style.borderRadius = "6px";
-  btn.style.cursor = "pointer";
-  btn.style.fontSize = "14px";
-  btn.style.boxShadow = "0 0 6px rgba(0,0,0,0.2)";
-  btn.onclick = () => window.open(newUrl, "_blank");
+  // 6. Check if button exists
+  let btn = document.querySelector("#exercise-api-btn");
 
-  document.body.appendChild(btn);
+  if (btn) {
+    // Button exists → update text/content
+    btn.textContent = "Open Exercise API (Updated)";
+    btn.onclick = () => window.open(newUrl, "_blank");
+  } else if (!url.includes("api")) {
+    // Button doesn't exist → create it
+    btn = document.createElement("button");
+    btn.id = "exercise-api-btn";
+    btn.textContent = "Open Exercise API";
+    btn.style.position = "fixed";
+    btn.style.top = "80px";
+    btn.style.left = "200px";
+    btn.style.zIndex = "999999";
+    btn.style.padding = "10px 15px";
+    btn.style.background = "#0066ff";
+    btn.style.color = "white";
+    btn.style.border = "none";
+    btn.style.borderRadius = "6px";
+    btn.style.cursor = "pointer";
+    btn.style.fontSize = "14px";
+    btn.style.boxShadow = "0 0 6px rgba(0,0,0,0.2)";
+    btn.onclick = () => window.open(newUrl, "_blank");
+    document.body.appendChild(btn);
+  }
 })();
