@@ -20,8 +20,8 @@
     const msgDiv = document.createElement("div");
     msgDiv.textContent = message;
     msgDiv.style.position = "fixed";
-    msgDiv.style.top = "120px";
-    msgDiv.style.right = "20px";
+    msgDiv.style.top = "140px";
+    msgDiv.style.left = "200px";
     msgDiv.style.zIndex = "999999";
     msgDiv.style.padding = "8px 12px";
     msgDiv.style.background = success ? "#28a745" : "#dc3545";
@@ -58,8 +58,8 @@
   const btn = document.createElement("button");
   btn.textContent = "Open Exercise API";
   btn.style.position = "fixed";
-  btn.style.top = "60px";
-  btn.style.right = "20px";
+  btn.style.top = "80px";
+  btn.style.left = "200px";
   btn.style.zIndex = "999999";
   btn.style.padding = "10px 15px";
   btn.style.background = "#0066ff";
