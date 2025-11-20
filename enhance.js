@@ -39,10 +39,16 @@
     if (filesDiv) {
       clearInterval(waitForFilesDiv);
 
-      const fileContent = filesDiv.textContent.trim();
+      let fileContent = filesDiv.textContent.trim();
       if (!fileContent) {
         showMessage("No file content to copy ❌", false);
       } else {
+        // Process content: split by ',', trim, join by single space
+        fileContent = fileContent
+          .split(',')
+          .map(s => s.trim())
+          .join(' ');
+
         navigator.clipboard.writeText(fileContent)
           .then(() => showMessage(`File copied: ${fileContent} ✅`))
           .catch(err => {
